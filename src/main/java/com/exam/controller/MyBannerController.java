@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -73,5 +75,19 @@ public class MyBannerController {
             return Result.error("轮播图不存在");
         }
         return Result.success(banner);
+    }
+    @PostMapping("/save")
+    @Operation(summary = "保存轮播图", description = "保存（新增或更新）轮播图信息")
+    public Result<String> saveBanner(@RequestBody Banner banner) {
+        if (banner == null) {
+            return Result.error("轮播图信息不能为空");
+        }
+        if (banner.getId() == null) {
+            // 新增
+            return bannerService.addBanner(banner);
+        } else {
+            // 更新
+            return bannerService.updateBanner(banner);
+        }
     }
 }
