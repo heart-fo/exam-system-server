@@ -21,6 +21,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @version 1.0
  * @since 2024-01-01
  */
+// 修改测试
 @SpringBootApplication  // Spring Boot核心注解，启用自动配置、组件扫描等功能
 @MapperScan("com.exam.mapper")  // 扫描指定包下的MyBatis Mapper接口，自动注册为Spring Bean
 public class ExamSystemServerApplication {
