@@ -22,9 +22,9 @@ spring:
   # 数据库配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver  # MySQL驱动
-    url: jdbc:mysql://localhost:3306/exam_system?useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Shanghai  # 数据库连接URL
+    url: jdbc:mysql://115.190.218.119:3306/exam_system?useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Shanghai  # 数据库连接URL
     username: root  # 数据库用户名
-    password: 123456  # 数据库密码
+    password: WangHD@6657939 # 数据库密码
   
   # Jackson配置
   jackson:
@@ -68,10 +68,10 @@ kimi:
 
 # MinIO 文件存储配置  # MinIO对象存储配置
 minio:
-  endpoint: http://47.94.86.115:9000  # MinIO服务器地址
-  bucket-name: java1229  # 存储桶名称
-  username: minioadmin  # 用户名
-  password: minioadmin  # 密码
+  endpoint: http://115.190.218.119:9000  # MinIO服务器地址
+  bucket-name: wang  # 存储桶名称
+  username: minioadminwhd  # 用户名
+  password: minioadminwhd  # 密码
   url-expiry: 604800  # URL过期时间（秒），默认7天
 
 # 本地文件存储配置（备用）  # 本地文件上传配置（备用）
