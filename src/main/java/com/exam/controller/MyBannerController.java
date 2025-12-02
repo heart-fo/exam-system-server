@@ -18,7 +18,6 @@ import com.exam.service.BannerService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.var;
 
 @RestController
 @RequestMapping("/api/my-banners")
@@ -35,11 +34,14 @@ public class MyBannerController {
         var wrapper = new LambdaQueryWrapper<Banner>().orderByAsc(Banner::getSortOrder);
         return Result.success(bannerService.list(wrapper));
     }
+
     @GetMapping("/active")
     @Operation(summary = "获取启用的轮播图列表", description = "获取所有启用（激活）状态的轮播图")
     public Result<List<Banner>> getActiveBanners() {
-        return Result.success(bannerService.list(new LambdaQueryWrapper<Banner>().eq(Banner::getIsActive, true).orderByAsc(Banner::getSortOrder)));
+        return Result.success(bannerService
+                .list(new LambdaQueryWrapper<Banner>().eq(Banner::getIsActive, true).orderByAsc(Banner::getSortOrder)));
     }
+
     @GetMapping("/toggle")
     @Operation(summary = "切换轮播图启用状态", description = "根据ID切换轮播图的启用（激活）状态")
     public Result<Boolean> toggleBannerStatus(Long id) {
@@ -54,6 +56,7 @@ public class MyBannerController {
         boolean updated = bannerService.updateById(banner);
         return updated ? Result.success(banner.getIsActive()) : Result.error("轮播图状态切换失败");
     }
+
     @GetMapping("/delete")
     @Operation(summary = "删除轮播图", description = "根据ID删除轮播图")
     public Result<Boolean> deleteBanner(Long id) {
@@ -76,6 +79,7 @@ public class MyBannerController {
         }
         return Result.success(banner);
     }
+
     @PostMapping("/save")
     @Operation(summary = "保存轮播图", description = "保存（新增或更新）轮播图信息")
     public Result<String> saveBanner(@RequestBody Banner banner) {
